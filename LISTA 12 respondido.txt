@@ -1,0 +1,173 @@
+LISTA 12
+
+EX 1
+
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct Aluno {
+    char nome[100];
+    int faltas;
+    float nota;
+} aluno_t;
+
+int main() {
+    aluno_t *aluno;
+
+   
+    aluno = (aluno_t*) malloc(sizeof(aluno_t));
+
+    
+    if (aluno == NULL) {
+        printf("Erro na alocação de memória.\n");
+        return 1;
+    }
+
+ 
+    printf("Digite o nome do aluno: ");
+    fgets(aluno->nome, sizeof(aluno->nome), stdin);
+    printf("Digite o número de faltas: ");
+    scanf("%d", &aluno->faltas);
+    printf("Digite a nota do aluno: ");
+    scanf("%f", &aluno->nota);
+
+   
+    printf("\nNome: %s", aluno->nome);
+    printf("Faltas: %d\n", aluno->faltas);
+    printf("Nota: %.2f\n", aluno->nota);
+
+   
+    if (aluno->nota >= 7.0 && aluno->faltas <= 25) {
+        printf("Aprovado!\n");
+    } else {
+        printf("Reprovado!\n");
+    }
+
+   
+    free(aluno);
+    return 0;
+}
+
+
+EX 2
+
+2. Alocação Dinâmica de Memória
+a) O comportamento da função free é liberar a memória alocada dinamicamente, permitindo que o sistema operacional possa reutilizá-la. Após o uso de free, a memória é desmarcada para reutilização, mas o ponteiro que apontava para ela se torna um "ponteiro pendente", não mais válido.
+
+b) Após chamar free, o ponteiro não deve ser utilizado diretamente. O ponteiro se torna inválido, e acessá-lo pode causar comportamentos imprevisíveis, como falhas no programa. Uma boa prática é definir o ponteiro como NULL após chamar free para evitar o uso acidental.
+
+c) Vazamentos de memória ocorrem quando a memória é alocada dinamicamente (usando malloc, calloc ou realloc), mas não é liberada adequadamente com free. Isso faz com que o programa "perca" a referência a essa área de memória, que nunca poderá ser reutilizada.
+
+d) Quando malloc não consegue realizar a alocação, ela retorna NULL.
+
+e) A instrução calloc aloca memória de forma semelhante a malloc, mas também inicializa a memória alocada com zero.
+
+f) A diferença entre malloc e calloc é que malloc apenas aloca a memória sem inicializá-la, enquanto calloc aloca a memória e a inicializa com zero.
+
+
+
+EX 3
+
+3. Manipulação de Arquivos
+a) Os diferentes modos de abertura de arquivos são:
+
+"r": abre o arquivo para leitura (o arquivo deve existir).
+"w": abre o arquivo para escrita (cria o arquivo se não existir, apaga o conteúdo se existir).
+"a": abre o arquivo para anexação (cria o arquivo se não existir, adiciona ao final do arquivo se existir).
+"rb", "wb", "ab": versões binárias dos modos acima.
+"r+": abre o arquivo para leitura e escrita.
+"w+": abre o arquivo para leitura e escrita, criando o arquivo se não existir e apagando o conteúdo se existir.
+"a+": abre o arquivo para leitura e anexação.
+
+
+
+b) Explicação das funções:
+
+fgets: lê uma linha de um arquivo ou entrada padrão (stdin) até um limite de caracteres.
+fprintf: escreve uma string formatada em um arquivo.
+fread: lê dados binários de um arquivo para um buffer.
+fwrite: escreve dados binários de um buffer para um arquivo.
+
+
+
+EX 4
+
+Análise:
+
+O código realiza uma comparação entre a e b. A operação scanf espera que o usuário forneça os valores de a e b.
+Se a > b ou a <= 0 for verdadeiro, a variável c recebe b / a. Caso contrário, ela recebe a / b.
+A operação de divisão entre inteiros (b / a ou a / b) pode resultar em truncamento (sem casas decimais).
+O valor de c será impresso com duas casas decimais.
+
+
+EX 5
+
+a * b / c = 0.667
+a * b % c + 1 = 3
+++a * b - c-- = 1
+7 - - b * ++d = 17
+a / b / c = 0.500
+7 + c * --d / e = 8.600
+2 * a % - b + c + 1 = 3
+39 / - ++e - + 29 % c = -7.500
+7 - + ++a % (3+b) = 4
+
+Análise: O código realiza várias operações aritméticas e usa operadores de incremento (++), decremento (--), e o operador módulo (%), resultando em diferentes valores para cada linha de printf
+
+
+EX 6
+
+Análise:
+
+Inicialmente, w recebe a soma de y e z, ou seja, w = 5 + 11 = 16.
+Como y não é maior que z, o valor de w permanece 16.
+O valor impresso será 16.
+
+
+EX 7
+
+
+#include <stdio.h>
+
+typedef struct Aluno {
+    char nome[100];
+    float nota;
+    int faltas;
+} aluno_t;
+
+int main() {
+    aluno_t aluno;
+
+    printf("Digite o nome do aluno: ");
+    fgets(aluno.nome, sizeof(aluno.nome), stdin);
+    printf("Digite a nota do aluno: ");
+    scanf("%f", &aluno.nota);
+    printf("Digite o numero de faltas: ");
+    scanf("%d", &aluno.faltas);
+
+    if (aluno.nota >= 7.0 && aluno.faltas <= 25) {
+        printf("Aprovado!\n");
+    } else {
+        printf("Reprovado!\n");
+    }
+
+    return 0;
+}
+
+
+
+EX 8
+
+
+8. Definição e funcionamento de um vetor:
+Um vetor é uma estrutura de dados que armazena uma coleção de elementos do mesmo tipo em uma sequência contínua de memória. No C, um vetor é tratado como um ponteiro para o primeiro elemento, e o acesso aos seus elementos é feito por meio de índices, começando do índice 0.
+
+Exemplo de declaração de vetor:
+
+c
+
+int v[10]; // vetor de 10 elementos inteiros
+
+
+O vetor é tratado de forma eficiente, mas os índices devem estar dentro dos limites válidos (de 0 a n-1, onde n é o tamanho do vetor).
+
