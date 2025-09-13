@@ -1,0 +1,17 @@
+Paciente: Jo├úo
+Idade: 10
+Peso: 30.50 kg
+Altura: 1.35 m
+Classifica├º├úo: Peso normal
+
+Paciente: Maria
+Idade: 12
+Peso: 42.00 kg
+Altura: 1.45 m
+Classifica├º├úo: Peso normal
+
+Paciente: Carlos
+Idade: 8
+Peso: 50.00 kg
+Altura: 1.30 m
+Classifica├º├úo: Obesidade
